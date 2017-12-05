@@ -1,4 +1,4 @@
-package dataStructures;
+package Main;
 
 import java.util.ArrayList;
 import States.GameState;

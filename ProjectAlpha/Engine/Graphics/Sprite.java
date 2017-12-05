@@ -1,4 +1,4 @@
-package GraphicsObjects;
+package Graphics;
 
 public class Sprite {
 

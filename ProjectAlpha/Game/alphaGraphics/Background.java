@@ -1,4 +1,4 @@
-package GraphicsObjects;
+package alphaGraphics;
 
 import Graphics.Shader;
 import Graphics.Texture;

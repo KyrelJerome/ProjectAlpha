@@ -14,7 +14,6 @@ import static org.lwjgl.system.MemoryStack.*;
 import static org.lwjgl.system.MemoryUtil.*;
 
 import Controllers.Input;
-import dataStructures.StateManager;
 
 import java.nio.*;
 
