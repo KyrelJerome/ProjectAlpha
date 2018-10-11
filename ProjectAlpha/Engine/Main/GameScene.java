@@ -1,4 +1,4 @@
-package States;
+package Main;
 
 public class GameScene {
 

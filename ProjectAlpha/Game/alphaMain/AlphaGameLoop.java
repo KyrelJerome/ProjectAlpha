@@ -1,8 +1,13 @@
 package alphaMain;
 
+import Controllers.KeyedInput;
+
 public class AlphaGameLoop extends Main.GameLoop{
+	AlphaStateManager sm;
 	public AlphaGameLoop() {
 		super();
+		
+		
 	}
 	
 	public static void main(String[] args) {
@@ -14,25 +19,21 @@ public class AlphaGameLoop extends Main.GameLoop{
 
 	@Override
 	public void gameLoopInit() {
-		// TODO Auto-generated method stub
-		
+		sm = new AlphaStateManager();		
 	}
 
 	@Override
 	public void gameLoopUpdate() {
-		// TODO Auto-generated method stub
-		
+		sm.update();
 	}
 
 	@Override
 	public void gameLoopRender() {
-		// TODO Auto-generated method stub
-		
+		sm.render();
 	}
 
 	@Override
 	public void gameLoopGetInputs() {
-		// TODO Auto-generated method stub
-		
+		sm.updateInputs(keyboard.getKeys());
 	}
 }

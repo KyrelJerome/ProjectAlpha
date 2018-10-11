@@ -1,24 +1,30 @@
 package Main;
 
 import java.util.ArrayList;
-import States.GameState;
 
-public abstract class StateManager {
+import Main.GameState;
 
+public abstract class StateManager {  
 	public ArrayList<GameState> gameStates;
-	private int currentState;
-	private int newState;
+	protected int currentState;
+	protected int newState;
 	private int defaultState;
 	private boolean isInitialized;
+	//private boolean isRunning;
 	private String intermediateData; 
+	
 	public StateManager (int defaultState, int currentState, boolean isInitialized){
-		gameStates.get(defaultState).init(); 
+
+		gameStates = new ArrayList<GameState>();
 		this.isInitialized = isInitialized;
 		this.defaultState = defaultState;
 		this.currentState = currentState;
 	}
-	
-	public abstract boolean init();
+	public void init() {
+		gameStates.get(defaultState).init(); 
+		managerInit();
+	}
+	protected abstract void managerInit();
 	
 	
 	/**
@@ -51,7 +57,7 @@ public abstract class StateManager {
 	 Changes the state to new index, showing defaultIndex as an intermediate.
 	 @param newIndex Index value of the state to be switched to.
 	 */
-	public void Swap(int newIndex) {
+	public void swap(int newIndex) {
 		
 		newState= newIndex;
 		
@@ -68,7 +74,7 @@ public abstract class StateManager {
 	 @param newIndex Index value of the state to be switched to.
 	 @param	loadingIndex Index value of the state to be used as intermediate.
 	 */
-	public void Swap(int newIndex, int loadingIndex) {
+	public void swap(int newIndex, int loadingIndex) {
 
 		newState= newIndex;
 		
@@ -85,7 +91,7 @@ public abstract class StateManager {
 	/**
 	 Feeds memory to the current state.
 	 */
-	public void updateInputs(int keys[])
+	public void updateInputs(boolean keys[])
 	{
 		if (isInitialized) {
 			gameStates.get(currentState).updateInputs(keys);
@@ -109,7 +115,7 @@ public abstract class StateManager {
 		return intermediateData;
 	}
 	
-	public void updateIntermediateData(String intermediateData) {
+	public void updateInterData(String intermediateData) {
 		this.intermediateData = intermediateData;
 	}
 }

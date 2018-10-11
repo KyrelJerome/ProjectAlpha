@@ -13,7 +13,7 @@ import static org.lwjgl.opengl.GL13.*;
 import static org.lwjgl.system.MemoryStack.*;
 import static org.lwjgl.system.MemoryUtil.*;
 
-import Controllers.Input;
+import Controllers.KeyedInput;
 
 import java.nio.*;
 
@@ -30,10 +30,10 @@ public abstract class GameLoop {
 	public static double SCALEHEIGHT = 1;
 	//Game Thread
 	private int FPS = 60;
-	private double ns = 1000000000.0 / FPS;
+	private final double ns = 1000000000.0 / FPS;
 	private int updates = 0;
 	private int frames = 0;
-	Input keyboard = new Input();
+	protected KeyedInput keyboard = new KeyedInput();
 	protected void run() {
 		System.out.println(name + Version.getVersion() + "!");
 
@@ -103,24 +103,24 @@ public abstract class GameLoop {
 
 	private void loop() {
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-		double delta = 0.0;
-		long now = System.nanoTime();
+		double unprocessed = 0.0;
+		long frameStart = System.nanoTime();
 		long lastTime = System.nanoTime();
 		long timer = System.currentTimeMillis();
 		while (! glfwWindowShouldClose(window)) {
-
+			frameStart = System.nanoTime();
 			// Poll for window events. The key callback above will only be
 			// invoked during this call.
-
+			unprocessed = (frameStart - lastTime) /ns;
+			//System.out.println("unprocessed :" + unprocessed);
+			lastTime = frameStart;
 			gameLoopGetInputs();
 			update();
 			updates++;
-			delta += (now - lastTime) / ns;
-			lastTime = now;
-			if (delta >= 1.0) {
-				update();
+			if (unprocessed >= 1.0) {
 				updates++;
-				delta--;
+				update();
+				unprocessed--;
 			}
 			render();
 			frames++;

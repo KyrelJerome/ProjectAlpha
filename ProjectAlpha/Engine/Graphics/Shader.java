@@ -19,8 +19,8 @@ public abstract class Shader {
 	private final int ID;
 	private Map<String, Integer> locationCache = new HashMap<String, Integer>();
 	
-	public Shader(String vertex, String fragment) {
-		ID = ShaderUtils.load(vertex, fragment);
+	public Shader(String shaderPath) {
+		ID = ShaderUtils.load(shaderPath);
 	}
 	
 	public int getUniform(String name) {

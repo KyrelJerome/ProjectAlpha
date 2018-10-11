@@ -8,9 +8,9 @@ public class ShaderUtils {
 	private ShaderUtils() {
 		
 	}
-	public static int load(String vertPath, String fragPath ) {
-			String vert = FileUtils.loadAsString(vertPath);
-			String frag = FileUtils.loadAsString(fragPath);
+	public static int load(String shader) {
+			String vert = FileUtils.loadAsString(shader + ".vs");
+			String frag = FileUtils.loadAsString(shader + ".fs");
 			return create(vert, frag);
 	}
 	public static int create(String vert, String frag)
@@ -19,7 +19,6 @@ public class ShaderUtils {
 		int vertID = glCreateShader(GL_VERTEX_SHADER);
 		int fragID = glCreateShader(GL_FRAGMENT_SHADER);
 		glShaderSource(vertID,vert);
-		glShaderSource(fragID,frag);
 		glCompileShader(vertID);
 		if (glGetShaderi(vertID,GL_COMPILE_STATUS) == GL_FALSE)
 		{
@@ -27,6 +26,7 @@ public class ShaderUtils {
 			System.err.println(glGetShaderInfoLog(vertID));
 			return -1;
 		}
+		glShaderSource(fragID,frag);
 		glCompileShader(fragID);
 		if (glGetShaderi(fragID,GL_COMPILE_STATUS) == GL_FALSE)
 		{
@@ -37,8 +37,17 @@ public class ShaderUtils {
 		glAttachShader(program, vertID);
 		glAttachShader(program,fragID);
 		glLinkProgram(program);
+		if(glGetProgrami(program, GL_LINK_STATUS)!= 1)
+		{
+			System.err.println(glGetProgramInfoLog(program));
+			System.exit(1);
+		}
 		glValidateProgram(program);
-		
+		if(glGetProgrami(program, GL_VALIDATE_STATUS)!= 1)
+		{
+			System.err.println(glGetProgramInfoLog(program));
+			System.exit(1);
+		}
 		glDeleteShader(vertID);
 		glDeleteShader(fragID);
 		
