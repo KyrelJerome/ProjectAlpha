@@ -29,10 +29,10 @@ public abstract class GameLoop {
 	public static double SCALEWIDTH = 1;
 	public static double SCALEHEIGHT = 1;
 	//Game Thread
-	private int FPS = 60;
-	private final double ns = 1000000000.0 / FPS;
-	private int updates = 0;
-	private int frames = 0;
+	private static int UPS = 60;
+	private static final double ns = 1000000000.0 / UPS;
+	private static int updates = 0;
+	private static int frames = 0;
 	protected KeyedInput keyboard = new KeyedInput();
 	protected void run() {
 		System.out.println(name + Version.getVersion() + "!");

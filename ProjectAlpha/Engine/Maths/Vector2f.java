@@ -89,6 +89,28 @@ public class Vector2f extends  Matrix{
 			setY(getX()*sin + getY()*cos);
 		}
 	}
+	public float getMagnitude() {
+		return (float) Math.sqrt(this.getX()*this.getX() + this.getY()*this.getY());
+	}
+	public void convertToUnitVector() {
+		float magnitude = this.getMagnitude();
+		if(magnitude== 0) {
+			return;
+		}
+		this.setX(this.getX()/magnitude);
+		this.setY(this.getY()/magnitude);
+	}
+	
+	public Vector2f getUnitVec() {
+		Vector2f returnable = this.copy();
+		float magnitude = this.getMagnitude();
+		if(magnitude== 0) {
+			return null;
+		}
+		returnable.setX(this.getX()/magnitude);
+		returnable.setY(this.getY()/magnitude);
+		return returnable;
+	}
 	/**
 	 * Rotates the vector around point by angle radians. (Positive is clockwise);
 	 * @param angle - rotation angle in radians (cartesian).
@@ -99,15 +121,12 @@ public class Vector2f extends  Matrix{
 		rotate(angle);
 		translate(point);
 	}
+	// TODO: Implement a projection vector calculation.
+	
 	public double getAngle() {
 		return Math.atan2(getY(),getX());
 	}
-	/*
-	public void rotateToAngle() {
-	
-		
-	}*/
-	
+
 	/**
 	 * 
 	 * @return Deepcopy of this vector. In other words,

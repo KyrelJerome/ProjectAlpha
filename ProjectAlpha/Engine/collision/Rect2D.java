@@ -1,16 +1,10 @@
 package collision;
 
-public class BoundingBox extends Shape2D{
-	private float maxX;
-	private float maxY;
-	private float minX;
-	private float minY;
+public class Rect2D extends Shape2D {
 
-	public BoundingBox(Shape2D copy) {
-		for()
-	
+	public Rect2D() {
+		
 	}
-	@Override
 	public float getMaxX() {
 		// TODO Auto-generated method stub
 		return 0;

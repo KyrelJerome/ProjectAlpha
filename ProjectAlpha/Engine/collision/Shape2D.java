@@ -14,7 +14,6 @@ public abstract class Shape2D {
 			vertices[i].multiply(constant);
 		}
 	}
-	
 	public abstract float getMaxX();
 	public abstract float getMinX();
 	public abstract float getMaxY();
