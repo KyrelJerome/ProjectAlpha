@@ -99,15 +99,19 @@ public class Vector2f extends  Matrix{
 		rotate(angle);
 		translate(point);
 	}
+	public double getAngle() {
+		return Math.atan2(getY(),getX());
+	}
 	/*
 	public void rotateToAngle() {
+	
 		
 	}*/
 	
 	/**
 	 * 
 	 * @return Deepcopy of this vector. In other words,
-	 *  returns a seperate, unsaved  reference;
+	 *  returns a separate, unsaved  reference;
 	 */
 	public Vector2f copy(){
 		return new Vector2f(this.getX(),this.getY());

@@ -2,9 +2,9 @@ package Maths;
 
 //TODO: Add IllegalOperationExceptions
 public class Matrix {
-	int rows;
-	int columns;
-	float[][] matrix;
+	protected int rows;
+	protected int columns;
+	protected float[][] matrix;
 
 	public Matrix() {
 		matrix = new float[1][1];
@@ -64,7 +64,7 @@ public class Matrix {
 	 * @param m2 - Matrix to multiply on right of m1.
 	 * @return If m1 can be multiplied by m2, returns m1*m2 and otherwise returns null;
 	 */
-	public Matrix multiply(Matrix  m1,Matrix m2) {
+	public static Matrix multiply(Matrix  m1,Matrix m2) {
 		if(m1.getNumColumns() == m2.getNumRows()){
 			Matrix output = new Matrix(m1.getNumRows(),m2.getNumColumns());
 			for(int i = 0; i < output.getNumRows(); i ++) {
@@ -76,6 +76,12 @@ public class Matrix {
 		
 		return null;		
 	}
+	/**
+	 * Multiplies matrices as m1*m2;
+	 * @param m1 - Matrix to multiply on left of m2.
+	 * @param m2 - Matrix to multiply on right of m1.
+	 * @return If m1 can be multiplied by m2, returns m1*m2 and otherwise returns null;
+	 */
 	public void multiply(float c1) {
 		
 		for(int i = 0; i < getNumRows(); i ++) {
@@ -84,25 +90,33 @@ public class Matrix {
 			}
 		}
 	}
-	protected boolean equals(Matrix m1, Matrix m2){
+	protected static boolean equals(Matrix m1, Matrix m2){
 		if(m1.getNumRows() == m2.getNumRows() && m1.getNumColumns() == m2.getNumColumns())
-		for(int i = 0; i < getNumRows(); i ++) {
-			for(int j = 0; j < getNumColumns(); j ++) {
+		for(int i = 0; i < m1.getNumRows(); i ++) {
+			for(int j = 0; j < m1.getNumColumns(); j ++) {
 				if(m1.getElement(i, j) != m2.getElement(i, j)) return false;
 			}
 		}
 		return true;
 	}
-	
+	public Matrix copy() {
+		Matrix returnable = new Matrix(this.getNumRows(), this.getNumColumns());
+		for(int i = 0;  i <= this.getNumRows(); i ++ ) {
+			for(int j = 0;  j <= this.getNumColumns(); j ++ ) {
+				returnable.setElement(i, j, this.getElement(i, j));
+			}
+		}
+		return returnable;
+	}
 	/**
 	 * 
-	 * @return dot product of m1*m2, 
+	 * @return - dot product of m1*m2 as a float;
 	 */
-	protected float dot(Matrix m1, Matrix m2) {
+	public static float dot(Matrix m1, Matrix m2) {
 		float total =  0;
 		if(m1.getNumRows() == 1 && m2.getNumColumns() == 1 && m1.getNumColumns() == m2.getNumRows()) {
-			for(int i = 0; i < columns; i ++) {
-				total += m1.getElement(0, i)*m1.getElement(i,0);
+			for(int i = 0; i < m1.columns; i ++) {
+				total += m1.getElement(0, i)*m2.getElement(i,0);
 			}
 		}
 		return (Float) null;
