@@ -1,6 +1,10 @@
 ## Phase 1 -Burst Engine Setup (To be exported)
-
 ### Part A:
+Mathematical setup such that vector maths are easy to prepare and complete
+* Vector2f class
+* Vector3f class
+* Matrix class
+### Part B:
 Game Engine Development: Custom Collision detection,Custom Collision analysis
 * General Polygons and GeoPolygons
 * Collision Detection to test whether certain vertices lie within a Convex Polygon.
@@ -9,7 +13,7 @@ Game Engine Development: Custom Collision detection,Custom Collision analysis
 * Setup a Dynamic AABB trees, Octrees/Quadtrees
 * (optional) Non-Convex Polygons to be created and have a setup for pre-processed triangulation into a set of Convex Polygons.
 
-### Part B:
+### Part C:
 Renderable Game objects: Animation Objects, Sprite Objects, 2D "Layering" System, OpenGL properties linked to Polygonal objects "AABB outputs"
 * Animation Objects
 * abstract Sprite Objects
@@ -17,12 +21,12 @@ Renderable Game objects: Animation Objects, Sprite Objects, 2D "Layering" System
 * 2D drawing "Layering"
 * Drawing Engine
 * Animation freezing, cancelling, deletion , reversion (akin to abilities in past project)
-### Part C:
+### Part D:
 Graphical user interfaces: Custom buttons, panels, and selection interfaces. 
 * Allow for a general abstract object for each such that custom buttons and panels may be created.
 * Allow for panels to access other panels and a "SceneManager"
 * Allow for an "Input" class that allows for two types of inputs, (Dynamic/Continuous,static/Discrete).
-### Part D:
+### Part E:
 * Game Objects
 * Main engine
 * Abstractable Scene Manager
