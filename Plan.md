@@ -1,5 +1,5 @@
 ## Phase 1 -Burst Engine Setup (To be exported)
-### Part A:
+### Part A (Complete):
 Mathematical setup such that vector maths are easy to prepare and complete
 * Vector2f class
 * Vector3f class
