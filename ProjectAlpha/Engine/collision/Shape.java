@@ -2,10 +2,10 @@ package collision;
 
 import Maths.Vector2f;
 /** 
- * Assumes all Shape2D objects include a 
+ * Assumes all Shape2D objects can be rotated, and are either Circles or convex polygons with finite points.
  */
-public abstract class Shape2D {
-	
+public abstract class Shape {
+
 	public abstract void rotateShapeRad(float angle);
 	//TODO 
 	public abstract void scale(float constant);

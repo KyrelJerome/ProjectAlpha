@@ -5,6 +5,7 @@ import Maths.Vector2f;
 public class AABB {
 	Vector2f topRight;
 	Vector2f bottomLeft;
+	private Vector2f center;
 	//TopLeft, BottomRight corners are all we define
 	public AABB(Vector2f topLeft, Vector2f bottomRight) {
 		
@@ -24,7 +25,7 @@ public class AABB {
 		}
 		return true;
 	}
-	public Collision2D getCollision() {
+	public Collision getCollision() {
 		return null;
 	}
 	public float getMaxX() {

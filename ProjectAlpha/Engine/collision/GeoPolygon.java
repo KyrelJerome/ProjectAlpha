@@ -5,7 +5,7 @@ import Maths.Vector2f;
 
 public class GeoPolygon implements Collidable{
 	//TODO Complete constructors
-	Shape2D polygon;
+	Shape polygon;
 	Vector2f center;
 	public void rotate(float angle) {
 		polygon.rotateShapeRad(angle);

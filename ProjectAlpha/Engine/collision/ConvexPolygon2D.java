@@ -2,7 +2,7 @@ package collision;
 
 import Maths.Vector2f;
 
-public class ConvexPolygon2D extends Shape2D{
+public class ConvexPolygon2D extends Shape{
 	protected Vector2f[] vertices;//Clockwise edges
 
 	@Override

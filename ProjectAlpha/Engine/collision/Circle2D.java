@@ -1,6 +1,6 @@
 package collision;
 
-public class Circle2D extends Shape2D{
+public class Circle2D extends Shape{
 
 	private float radius;	
 	public Circle2D (float radius) {
